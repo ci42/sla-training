@@ -46,16 +46,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http.headers().contentSecurityPolicy("default-src 'self'");
   }
 
-  /**
-   * Validation factory bean is configured here because its message interpolation mechanism
-   * is considered a potential threat if enabled.
-   *
-   * @return newly configured factory bean
-   */
-  @Bean
-  public static LocalValidatorFactoryBean defaultValidator() {
-    LocalValidatorFactoryBean factoryBean = new LocalValidatorFactoryBean();
-    factoryBean.setMessageInterpolator(new ParameterMessageInterpolator());
-    return factoryBean;
-  }
 }
